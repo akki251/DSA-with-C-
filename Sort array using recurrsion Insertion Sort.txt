@@ -1,0 +1,62 @@
+
+
+#include <iostream>
+
+using namespace std;
+
+
+void sortedArray(int a[] , int n)
+{
+    
+    
+    if(n==0)
+    return ;
+    
+    
+    
+ sortedArray(a+1,n-1);
+ 
+ int j = 0;
+ int i = 1;
+while(j!= n-1)
+{
+    if(a[j] > a[i]){
+    int temp = a[j];
+    a[j] = a[i];
+    a[i] = temp;
+    }
+    
+    
+    i++;
+    j++;
+    
+}
+ 
+ 
+ 
+}
+
+
+int main()
+{
+  
+  int n;
+  int i;
+  
+ cin >> n;
+  int a[n];
+ 
+   for(i=0;i<n ; i++){  
+      cin >> a[i];
+  }
+  
+  sortedArray(a,n);
+  cout <<"sortedArray";
+    for(i=0;i<n ; i++){  
+      cout << a[i];
+  }
+
+
+
+}
+ 

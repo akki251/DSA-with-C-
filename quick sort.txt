@@ -1,0 +1,60 @@
+
+	
+	void quickSort(int a[], int start, int end)
+	{
+    	
+        // base case 
+        if(start >= end)
+        {
+            return;
+        }
+        
+        int pivetElement = a[0];
+        
+        int count = 0;
+        for(int i =0 ; i<=end ; i++)
+        {
+            if(a[i] < a[0])
+                count++;
+        }
+        
+        
+        //swapping pivet
+        int temp;
+        temp = a[0];
+        a[0] = a[count];
+        a[count] = temp;
+        
+    
+       int s = start;
+        int e = end;
+        
+        while(s!=count || e!=count){
+        if(a[s] < a[count])
+        {
+            s++;
+        }
+        else if(a[e] > a[count])
+        {
+            e--;
+        }
+        else
+        {
+            int temp2 = a[s];
+            a[s] = a[e];
+            a[e] = temp2;
+            s++;
+            e++;
+        }
+            
+        }
+        
+        
+        
+        
+        
+	}
+	
+		
+
+

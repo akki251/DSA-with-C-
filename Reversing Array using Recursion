@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+void reverseArray(int a[], int n) {
+  if (n == 0)
+    return;
+
+  int temp = a[0];
+  reverseArray(a + 1, n - 1);
+
+  for (int i = 0; i <= n - 2; i++)
+
+  {
+
+    a[i] = a[i + 1];
+  }
+
+  a[n - 1] = temp;
+
+}
+
+int main() {
+  int a[3] = {
+    1,
+    2,
+    3
+  };
+  int i = 0;
+
+  int n = sizeof(a) / 4;
+
+  cout << "inital array " << endl;
+  for (i = 0; i < n; i++) {
+    cout << a[i];
+  }
+
+  cout << endl;
+  reverseArray(a, n);
+
+  cout << "reversed Array" << endl;
+  for (i = 0; i < n; i++) {
+    cout << a[i];
+  }
+
+}

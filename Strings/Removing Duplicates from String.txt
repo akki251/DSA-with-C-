@@ -1,0 +1,64 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void removeDuplicatesTogether(char s[], int size)
+{
+   int i;
+   if (size == 0)
+      return;
+
+   removeDuplicatesTogether(s + 1, size - 1);
+
+   if (s[0] == s[1])
+   {
+
+      for (i = 0; i <= size - 2; i++)
+      {
+
+         s[i] = s[i + 1];
+      }
+
+      s[i] = '\0';
+   }
+}
+void removeDuplicates(char s[], int size)
+{
+   int i, j;
+   if (size == 0)
+      return;
+
+   removeDuplicates(s + 1, size - 1);
+
+   for (i = 1; i < size; i++)
+   {
+      if (s[0] == s[i])
+      {
+         for (j = 0; j <= size - 2; j++)
+         {
+
+            s[j] = s[j + 1];
+         }
+
+         s[j] = '\0';
+      }
+   }
+}
+
+int main()
+{
+
+   char s[] = "akshansh";
+
+   // int size = sizeof(s) / sizeof(s[0]);
+
+   int size = strlen(s);
+
+   removeDuplicatesTogether(s, size);
+   removeDuplicates(s, size);
+
+   for (int i = 0; i < size; i++)
+   {
+      cout << s[i];
+   }
+}

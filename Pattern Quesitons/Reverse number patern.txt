@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    int i = 1;
+    int j = 1;
+    int count = 1;
+    int val = 1;
+    int n =4;
+    
+    while(i<=n)
+    {
+        j=1;
+        while(j<=i)
+        {
+            cout << val;
+            val--;
+            j++;
+        }
+        
+        
+        
+        i++;
+        val = val + i + count;
+        count ++;
+        cout << endl;
+        
+        
+    }
+    
+    
+}
+
+
+// Output 
+1
+3 2
+6 5 4
+10 9 8 7

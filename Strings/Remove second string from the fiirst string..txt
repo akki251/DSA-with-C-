@@ -1,0 +1,26 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+
+   string s1, s2;
+   cin >> s1 >> s2;
+
+   int isFound = s2.find(s1);
+   if (isFound < 0)
+      cout << "No matched found ";
+
+   else if (isFound == 0)
+   {
+      s2 = s2.substr(s1.length());
+   }
+   else
+   {
+      s2 = s2.substr(0, isFound) + s2.substr(isFound + s1.length());
+   }
+
+   // cout << s1 << endl;
+   cout << s2 << endl;
+}

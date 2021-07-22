@@ -1,0 +1,60 @@
+
+
+// DUTCH NATIONAL FLAG ALGORITHM
+
+
+
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+
+void swapInt(int *p, int *q)
+{
+    int temp;
+    temp = *p;
+    *p = *q;
+    *q = temp;
+}
+
+int main()
+{
+
+    int a[] = {2, 1, 1, 1, 0, 0, 0, 0, 1, 2};
+    int n = sizeof(a) / sizeof(a[0]);
+    int c = 4;
+    int d = 5;
+int i;
+    swapInt(&c, &d);
+
+    int low = 0;
+    int mid = 0;
+    int high = n - 1;
+
+    while (mid <= high)
+    {
+        switch (a[mid])
+        {
+        case 0:
+            swapInt(&a[mid], &a[low]);
+            low++;
+            mid++;
+            break;
+
+        case 1:
+            mid++;
+            break;
+
+        case 2:
+            swapInt(&a[mid], &a[high]);
+            high--;
+            break;
+        }
+    }
+
+    for(i = 0; i < n; i++)
+    {
+        cout << a[i];
+    }
+}

@@ -1,0 +1,78 @@
+
+// BINARY SEARACH USING RECURSION 
+
+// INCLUDED SORTING FUCN AND SEARCHING 
+
+
+
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int binarySearch(int a[], int l, int h, int k)
+{
+
+    int mid;
+    if (l > h)
+        return -1;
+
+    if (l == h)
+    {
+        if (a[l] == k)
+            return l;
+    }
+
+    mid = (l + h) / 2;
+
+    if (a[mid] == k)
+        return mid;
+
+    if (k < a[mid])
+    {
+        return binarySearch(a, l, mid - 1, k);
+    }
+    else
+    {
+        return binarySearch(a, mid + 1, h, k);
+    }
+}
+void sort(int a[], int n)
+{
+    int i, j, temp;
+
+    if (n == 0)
+        return;
+
+    sort(a + 1, n - 1);
+
+    if (a[0] > a[1])
+    {
+        temp = a[0];
+        a[0] = a[1];
+        a[1] = temp;
+
+        sort(a, n);
+    }
+}
+
+int main()
+{
+
+    int a[] = {3, 2, 1, 9,13,2,15};
+    int n = sizeof(a) / sizeof(a[0]);
+ 
+    int i, j, k;
+    cin >> k;
+
+    int l = 0;
+    int h = n - 1;
+    sort(a, n);
+      cout << "sorted Array is " << endl;
+      for(i=0;i<=n;i++)
+      {
+          cout << a[i] << " ";
+      }
+      cout << endl;
+    cout << "element is present " << binarySearch(a, l, h, k) ;
+}

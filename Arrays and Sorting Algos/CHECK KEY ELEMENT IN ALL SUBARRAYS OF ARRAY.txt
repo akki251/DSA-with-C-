@@ -1,0 +1,55 @@
+SLIDING WINDOW PROBLEM 2
+
+
+CHECK KEY ELEMENT IN ALL SUBARRAYS OF ARRAY 
+
+
+int main()
+{
+    int a[] = {7, 6, 4, 3, 1};
+
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int k;
+    cin >> k;
+
+    int x;
+    cin >> x;
+    int i = 0;
+    int j = 0;
+
+    int m;
+
+    while (j != n)
+    {
+
+        if (j - i + 1 < k)
+        {
+            j++;
+        }
+
+        else if (j - i + 1 == k)
+        {
+
+            for (m = i; m <= j; m++)
+            {
+
+                if (a[m] == x)
+                {
+                    break;
+                }
+            }
+
+            if (m == j + 1)
+            {
+                cout << "not found in all sub arrays";
+                return 0;
+            }
+
+            i++;
+            j++;
+        }
+    }
+
+    cout << "found in all arrays";
+}

@@ -1,0 +1,129 @@
+ Valid Pairs
+Difficulty: EASY
+Avg. time to solve
+22 min
+Success Rate
+80%
+Problem Statement
+You are given an array 'ARR' of 'N' integers and two integers 'K' and 'M'.
+You need to return true if the given array can be divided into pairs such that the sum of every pair gives remainder 'M' when divided by 'K'. Otherwise, you need to return false.
+For example:
+
+If the given array is [2, 1, 5, 7] and K = 9 and M = 3. Then you need to return true because we can divide the array into two pairs, i.e (2, 1) and (5, 7) whose sums are 3 and 12, which when divided by 9 gives remainder 3, thus it is possible to divide the given array into pairs.  
+
+Note:
+
+Every element of the array should contribute to only one pair, i.e if the array is [3, 0, 0] and K = 2 and M = 1, then you need to return false, as element 3 will make a pair with any one of the 0. 
+
+Input format :
+
+The first line of input contains a single integer 'T', representing the number of test cases or queries to be run. 
+Then the 'T' test cases follow.
+
+The first line of each test case contains an integer 'N' representing the size of the given array.
+
+The second line contains 'N' single space-separated integers representing the elements of the array 'ARR'.
+
+The third line contains two single space-separated integers 'K' and 'M'.
+
+Output Format :
+
+For each test case, print a single line containing either "True" or "False".
+
+Note:
+
+You do not need to print anything. It has already been taken care of. Just implement the given function.
+
+Constraint :
+
+1 <= T <= 10
+1 <= N <= 10 ^ 5
+1 <= ARR[ i ] <= 10 ^ 9
+1 <= K <= 10 ^ 9
+0 <= M < K
+
+Where 'N' is the length of the array, 'ARR[ i ]' denotes the 'ith' element of array 'ARR' and 'K' and 'M' are the given integers.
+
+Time Limit: 1 sec
+
+Sample Input 1:
+
+1
+4
+2 1 5 7
+9 3
+
+Sample Output 1:
+
+True
+
+Explanation for input 1:
+
+Pairs will be {2,1} and {5,7} whose sums are 3 and 12 which will give remainder 3 when divided by 9.
+
+Sample Input 2:
+
+1
+5
+6 6 3 0 0
+9 3
+
+Sample Output 2:
+
+False
+
+Explanation for Input 2:
+
+As pairs would be {6, 6} and {3, 0}, but second 0 will not be able to make pair with any of the elements, thus it is not possible to make valid pairs.
+
+
+
+
+///////////////////// I have used K = 9 and m= 3, for the solution you can further more can customize this to variables.
+
+
+
+
+
+
+int main()
+{
+    int a[] = {2, 6, 5, 7};
+    int sum = 0;
+    int n = sizeof(a) / sizeof(a[0]);
+    int i = 0, j = 0;
+    int k = 2;
+
+    if (n % 2 != 0)
+    {
+
+        cout << "false";
+        return 0;
+    }
+
+    while (j < n)
+    {
+
+        if (j - i + 1 < k)
+            j++;
+
+        else if (j - i + 1 == k)
+        {
+            sum = a[i] + a[j];
+
+            if (sum % 9 != 3)
+            {
+
+                cout << "false";
+                return 0;
+            }
+
+            sum = sum - a[i] - a[j];
+
+            i = i + k;
+            j = j + k;
+        }
+    }
+
+    cout << "true";
+}

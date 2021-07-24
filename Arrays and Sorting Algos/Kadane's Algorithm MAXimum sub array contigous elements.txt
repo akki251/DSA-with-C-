@@ -1,0 +1,33 @@
+https://www.youtube.com/watch?v=6PxU4rfnf4Q
+
+Kadane Algorithm
+
+
+int main()
+{
+    int a[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+
+    int n = sizeof(a) / sizeof(a[0]);
+    int i;
+    int current = 0;
+    int maxSum = INT32_MIN;
+    for (i = 0; i < n; i++)
+    {
+
+        current += a[i];
+
+        maxSum = max(current, maxSum);
+
+        if (current < 0)
+            current = 0;
+    }
+
+    cout << maxSum;
+}
+
+
+
+
+
+
+

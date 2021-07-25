@@ -1,0 +1,42 @@
+
+BINARY SEARCH 2D ARRAY BEST APPRAOCH o(n)
+
+int main()
+{
+
+    int n;
+    cin >> n;
+    int i, j, x;
+    cin >> x;
+    int a[n][n];
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+
+    i = 0;
+    j = n - 1;
+    while (i < n && j >= 0)
+    {
+        if (a[i][j] == x)
+        {
+            cout << "Found";
+            return 0;
+        }
+
+        else if (x < a[i][j])
+        {
+            j--;
+        }
+
+        else
+        {
+            i++;
+        }
+    }
+
+    cout << "not Found";
+}

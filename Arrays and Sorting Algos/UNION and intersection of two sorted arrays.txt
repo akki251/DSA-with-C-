@@ -1,0 +1,81 @@
+
+Union and Intersection of Two SORTED ARRAYS.
+
+void intersection(int a1[], int a2[], int n1, int n2)
+{
+    int i = 0, j = 0;
+
+    while (i < n1 && j < n2)
+    {
+
+        if (a1[i] > a2[j])
+        {
+
+            j++;
+        }
+
+        else if (a2[j] > a1[i])
+        {
+
+            i++;
+        }
+
+        else
+        {
+            cout << a1[i];
+            i++;
+            j++;
+        }
+    }
+}
+void merge(int a1[], int a2[], int n1, int n2)
+{
+    int i = 0, j = 0;
+
+    while (i < n1 && j < n2)
+    {
+
+        if (a1[i] > a2[j])
+        {
+            cout << a2[j];
+            j++;
+        }
+
+        else if (a2[j] > a1[i])
+        {
+            cout << a1[i];
+            i++;
+        }
+
+        else
+        {
+            cout << a1[i];
+            i++;
+            j++;
+        }
+    }
+
+    while (i < n1)
+    {
+        cout << a1[i];
+        i++;
+    }
+    while (j < n2)
+    {
+        cout << a2[j];
+        j++;
+    }
+}
+int main()
+{
+    int a1[] = {1, 2, 3};
+    int a2[] = {1, 2, 7};
+    int n1 = sizeof(a1) / sizeof(a1[0]);
+    int n2 = sizeof(a2) / sizeof(a2[0]);
+
+    cout << "Union of both arrays is " << endl;
+    merge(a1, a2, n1, n2);
+    cout << endl;
+    cout << "intersection of both arrays is " << endl;
+    intersection(a1, a2, n1, n2);
+}

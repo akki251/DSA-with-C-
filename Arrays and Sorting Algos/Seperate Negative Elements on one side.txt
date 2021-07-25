@@ -1,0 +1,32 @@
+
+o (N) using two pointers algorithm.
+
+
+int main()
+{
+    int a[] = {-12, 11, -13, -5,
+               6, -7, 5, -3, 11};
+    int n = sizeof(a) / sizeof(a[0]);
+    int low = 0;
+    int high = n - 1;
+    int i;
+
+    while (low <= high)
+    {
+        if (a[low] < 0)
+        {
+            low++;
+        }
+
+        else if (a[low] > 0)
+        {
+            swapInt(&a[low], &a[high]);
+            high--;
+        }
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        cout << a[i];
+    }
+}

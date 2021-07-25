@@ -1,0 +1,49 @@
+
+BINARY SEARCH IN 2D ARRAY//
+
+
+int main()
+{
+
+    int n;
+    cin >> n;
+    int i, j, x;
+    cin >> x;
+    int a[n][n];
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+
+    int mid;
+    for (i = 0; i < n; i++)
+    {
+        int l = 0;
+        int h = n - 1;
+        while (l <= h)
+        {
+
+            mid = (l + h) / 2;
+
+            if (a[i][mid] == x)
+            {
+                cout << "Found";
+                return 0;
+            }
+
+            else if (x < a[i][mid])
+            {
+                h = mid - 1;
+            }
+            else
+            {
+                l = mid + 1;
+            }
+        }
+    }
+
+    cout << "not found";
+}

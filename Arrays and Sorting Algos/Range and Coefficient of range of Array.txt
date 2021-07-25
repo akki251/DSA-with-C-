@@ -1,0 +1,25 @@
+Range and Coefficient of range of Array
+
+
+int main()
+{
+    int a[] = {1, 2, 3};
+    int n = sizeof(a) / sizeof(a[0]);
+    int maximum = 0;
+    int minimum = 0;
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        maximum = max(a[maximum], a[i]);
+    }
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] < a[minimum])
+            minimum = a[i];
+    }
+
+    cout << maximum << " " << minimum << endl;
+
+    cout << "Range is :" << maximum - minimum << endl;
+    cout << "Coeffiecent is :" << (maximum - minimum) / (maximum + minimum);
+}

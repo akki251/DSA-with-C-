@@ -1,0 +1,21 @@
+kth LARGEST and Smallest Number of an aray 
+o(n Log n)
+
+
+
+int main()
+{
+    int a[] = {1, 2, 3, 9, 5};
+    int n = sizeof(a) / sizeof(a[0]);
+    int i, k;
+    cin >> k;
+    if (k > n)
+    {
+        cout << "invalid input";
+        return 0;
+    }
+
+    sort(a, n);
+    cout << k << " largest Number is : " << a[n - k] << endl;
+    cout << k << " smallest Number is: " << a[k - 1];
+}

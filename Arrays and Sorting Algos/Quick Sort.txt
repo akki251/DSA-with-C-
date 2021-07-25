@@ -1,0 +1,55 @@
+int partition(int a[], int start, int end)
+{
+    int pivet = 0;
+    int i;
+    int count = 0;
+
+    for (i = start; i <= end; i++)
+    {
+        if (a[i] < a[pivet])
+            count++;
+    }
+
+    swapInt(&a[count], &a[pivet]);
+
+    while (start != count || end != count)
+    {
+        if (a[start] < a[count])
+            start++;
+        else if (a[end] > a[count])
+            end--;
+
+        else
+        {
+            swapInt(&a[start], &a[end]);
+            start++;
+            end--;
+        }
+    }
+
+    return count;
+}
+void quickSort(int a[], int n)
+{
+    if (n == 0 || n == 1)
+        return;
+
+    int c = partition(a, 0, n - 1);
+    cout << "I am working correct ";
+    quickSort(a, c);
+    quickSort(a + c + 1, n - c - 1);
+}
+
+int main()
+{
+    int a[] = {5, 4, 1, 2, 3, 6, 7};
+
+    int n = sizeof(a) / sizeof(a[0]);
+
+    quickSort(a, n);
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+}

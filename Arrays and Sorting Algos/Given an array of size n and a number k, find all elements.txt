@@ -1,0 +1,38 @@
+
+Given an array of size n and a number k, find all elements that appear more than n/k times
+
+O(N2) effcient way available with hashing.
+
+
+int main()
+{
+
+    int a[] = {9, 6, 6, 8, 9, 9, 6};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int k = 3;
+
+    sort(a, n);
+    int i;
+    int count = 1;
+    int b[n];
+    int p = 0;
+    for (i = 0; i < n - 1; i++)
+    {
+
+        if (a[i] == a[i + 1])
+        {
+            count++;
+
+            if (count > n / k)
+            {
+                b[p] = a[i];
+                count = 1;
+                p++;
+            }
+        }
+    }
+
+    for (i = 0; i < p; i++)
+        cout << b[i] << " ";
+}

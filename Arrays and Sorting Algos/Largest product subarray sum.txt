@@ -1,0 +1,48 @@
+https://www.youtube.com/watch?v=vtJvbRlHqTA
+ 
+   LArgest product sub array Sum V V IMP
+
+
+int maximumofThree(int a, int b, int c)
+{
+    if (a > b && a > c)
+        return a;
+    else if (b > c && b > a)
+        return b;
+    else
+        return c;
+}
+int minimumofThree(int a, int b, int c)
+{
+    if (a < b && a < c)
+        return a;
+    else if (b < c && b < a)
+        return b;
+    else
+        return c;
+}
+int main()
+{
+
+    int a[] = {-1, 6, 2, 0, 7, 9};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int ans = a[0];
+    int current_Max = a[0];
+    int current_Min = a[0];
+    int prev_Max = a[0];
+    int prev_Min = a[0];
+    int i;
+    for (i = 1; i < n; i++)
+    {
+        current_Max = maximumofThree(a[i], a[i] * prev_Max, a[i] * prev_Min);
+        current_Min = minimumofThree(a[i], a[i] * prev_Max, a[i] * prev_Min);
+
+        ans = max(current_Max, ans);
+
+        prev_Min = current_Min;
+        prev_Max = current_Max;
+    }
+
+    cout << ans;
+}

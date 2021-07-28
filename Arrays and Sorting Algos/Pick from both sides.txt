@@ -1,0 +1,40 @@
+Paste this in vs code, to get better view, https://www.youtube.com/watch?v=5_s030FOT08
+https://www.loom.com/share/93e06e9cab934b2b9e26a8b990343453 - MY explaination must watch 
+Pick from both sides VV IMP problem
+
+int main()
+{
+
+    int a[] = {-3, -2, 3, 1, 2, 12};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int k = 3; // pick elements from either side of the array or else / 1 from left and 2 from right.
+    int i = 0;
+    int sum = 0; // intital sum = 0;
+
+    for (i = 0; i < k; i++)
+    {
+        sum = sum + a[i]; // first we are calculating by taking all K elements from left side, and store it in sum ;
+    }
+
+    int ans = sum; // at this moment our ans is the above calculated sum.
+
+    int j = n - 1; // apply two pointer technique, we initialize j = n -1;
+    i--;
+    // from the above for looop, i value is 3, which (k + 1) element, we have to decrease it .
+    while (k) // now until k reaches 0, we have to make this loop, https://www.youtube.com/watch?v=5_s030FOT08
+        sum = sum - a[i]; // we will pop last elemnt of the sum calculated
+        i--;
+        cout << "sum of i values is " << sum << endl;
+
+        // decrease the pivet
+        sum = sum + a[j]; // and add the last element from the array,
+        cout << "sum of j values is " << sum << endl;
+
+        j--; // also the pivet .
+        ans = max(ans, sum);
+        k--; // comparing the maximum of all ans in every iterition.
+    }
+
+    cout << ans; // finally we print our ans/
+}

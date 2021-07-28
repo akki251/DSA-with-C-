@@ -1,0 +1,32 @@
+Minimize the maximum difference between the heights
+https://www.youtube.com/watch?v=Av7vSnPSCtw
+
+int main()
+{
+
+    int a[] = {1, 5, 15, 10};
+    int k = 3;
+    int n = sizeof(a) / sizeof(a[0]);
+    sort(a, n);
+    int i;
+    int ans = a[n - 1] - a[0];
+
+    int GlobalSmallest = a[0] + k;
+    int GlobalLargest = a[n - 1] - k;
+
+    int curentMin = 0;
+    int curentMax = 0;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        curentMin = min(GlobalSmallest, a[i + 1] - k);
+        curentMax = max(GlobalLargest, a[i] + k);
+
+        if (curentMin < 0)
+            continue;
+
+        ans = min(ans, curentMax - curentMin);
+    }
+
+    cout << ans;
+}

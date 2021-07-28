@@ -1,0 +1,44 @@
+https://www.geeksforgeeks.org/find-the-two-repeating-elements-in-a-given-array/
+
+
+int fact(int n)
+{
+    if (n == 0)
+        return 1;
+
+    return n * fact(n - 1);
+}
+
+int main()
+{
+
+    int n;
+    cin >> n;
+
+    int a[n + 2] = {1, 2, 3, 3, 4, 5, 5};
+
+    int sumOriginal = (n * (n + 1)) / 2;
+    int productOriginal = fact(n);
+    int sumArray = 0;
+    int productArray = 1;
+    int i;
+    for (i = 0; i < n + 2; i++)
+    {
+        sumArray = sumArray + a[i];
+    }
+    for (i = 0; i < n + 2; i++)
+    {
+        productArray = productArray * a[i];
+    }
+
+    int x;
+    int y;
+
+    sumArray = sumArray - sumOriginal; // sumarray is x+y
+    productArray = productArray / productOriginal;
+
+    int d = sqrt(sumArray * sumArray - 4 * productArray);
+
+    cout << (sumArray + d) / 2 << endl;
+    cout << (sumArray - d) / 2;
+}

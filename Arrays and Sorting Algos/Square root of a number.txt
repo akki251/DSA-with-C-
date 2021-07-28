@@ -1,0 +1,15 @@
+Square root of a number 
+
+int main()
+{
+
+    int n;
+    cin >> n;
+    int output = 0;
+    while (output * output <= n)
+    {
+        output++;
+    }
+
+    cout << --output;
+}

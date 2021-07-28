@@ -1,0 +1,51 @@
+Find whether an array is subset of another array | 
+
+
+int main()
+{
+
+    int firstArray[] = {11, 1, 13, 21, 3, 7};
+
+    int firstArraySize = sizeof(firstArray) / sizeof(firstArray[0]);
+
+    int secondArray[] = {11, 3, 7, 1};
+    int secondArraySize = sizeof(secondArray) / sizeof(secondArray[0]);
+
+    sort(firstArray, firstArraySize);
+
+    sort(secondArray, secondArraySize);
+
+    int firstArrayLow = 0;
+    int secondArrayLow = 0;
+    int count = 0;
+
+    while (firstArrayLow != firstArraySize && secondArrayLow != secondArraySize)
+    {
+
+        if (firstArray[firstArrayLow] < secondArray[secondArrayLow])
+        {
+            firstArrayLow++;
+            cout << " me chala - 1";
+        }
+
+        else if (secondArray[secondArrayLow] < firstArray[firstArrayLow])
+        {
+            secondArrayLow++;
+            cout << " me chala - 2";
+        }
+
+        else if (firstArray[firstArrayLow] == secondArray[secondArrayLow])
+        {
+            firstArrayLow++;
+            secondArrayLow++;
+            count++;
+        }
+    }
+
+    if (count == secondArraySize)
+        cout << "array 2 is subset of array 1";
+    else
+    {
+        cout << "array 2 is not the subset of array 1";
+    }
+}

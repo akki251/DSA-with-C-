@@ -1,0 +1,57 @@
+maxNumberofOnesinRow in 2D arrays 
+
+int maxNumberofOnesinRow(int a[R][C], int low, int high)
+{
+    int count;
+    int ans = 0;
+    if (low > high)
+    {
+        return -1;
+    }
+    int mid = (low + high) / 2;
+    int row = 0;
+    while (row != high + 1)
+    {
+
+        count = 0;
+
+        if (a[row][mid] == 1)
+        {
+            count++;
+            count = count + maxNumberofOnesinRow(a, mid + 1, high);
+        }
+
+        else if (a[row][mid] < 1)
+        {
+            count = count + maxNumberofOnesinRow(a, mid + 1, high);
+        }
+        else if (a[row][mid] > 1)
+        {
+            count = count + maxNumberofOnesinRow(a, 0, mid - 1);
+        }
+
+        ans = max(ans, count);
+        row++;
+    }
+
+    return ans;
+}
+int main()
+{
+
+    int n = 4;
+
+    int a[R][C];
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+
+        {
+            cin >> a[i][j];
+        }
+    }
+
+    int ans = maxNumberofOnesinRow(a, 0, n - 1);
+    cout << ans;
+}

@@ -1,0 +1,44 @@
+Majority Element
+
+    Difficulty Level : Medium
+    Last Updated : 22 Apr, 2021
+
+Write a function which takes an array and prints the majority element (if it exists), otherwise prints “No Majority Element”. A majority element in an array A[] of size n is an element that appears more than n/2 times (and hence there is at most one such element). 
+ // SOL N 
+int main()
+{
+
+    int a[] = {1, 1, 2, 1, 3, 5, 1};
+
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int i = 0;
+    int majorityIndex = 0;
+    int count = 1;
+    for (i = 1; i < n; i++)
+    {
+        if (a[majorityIndex] == a[i])
+            count++;
+
+        else
+            count--;
+
+        if (count == 0)
+        {
+            majorityIndex = i;
+            count = 1;
+        }
+    }
+
+    count = 0;
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] == a[majorityIndex])
+            count++;
+    }
+
+    if (count > n / 2)
+        cout << a[majorityIndex] << " is a majority element";
+    else
+        cout << "no majority element found";
+}

@@ -1,0 +1,56 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    // k for space printing
+    int k = 1;
+
+    int i = 1; 
+    // i for Row calculation
+    int j = 1;
+    // j for column printing
+    int n = 4; // fixed n
+
+    int val;
+    // val for printing values in pattern
+    while (i <= n)  // jitni n hai utni row hai mtlb 4
+    {
+
+       // code for printing space
+        k = 1;
+        while (k <= n - i)
+        {
+            cout << " ";
+            k++;
+        }
+     // code for printing space .. ends here
+
+     // har bar jitni i ki value hai utne s value start krni hai 
+        val = i;
+        j = 1; // j ko reset krna padega taki colum k start s print kre.
+
+
+        while (j <= i) // jab tk j <= i hai tab tk increament kra value ko
+        {
+            cout << val;
+            val++;
+            j++;
+        }
+
+        val -= 2; // jaise hi j > i ho jaye val ko 2 se decrement kr do
+
+        while (j <= 2 * i - 1)  // jitni i uske hisab se 2*i - 1 column hai 
+        {
+
+            cout << val;
+            val--;
+            j++;
+        }
+
+              i++;// har row print k baad row change and line change 
+        cout << endl;
+    }
+}
+

@@ -1,0 +1,36 @@
+  
+based on simple slding window algorithm
+FLIPKART 
+
+
+int main()
+{
+
+    int a[] = {12, 4, 7, 9, 2, 23, 25, 41, 30,
+               40, 28, 42, 30, 44, 48, 43, 50};
+    int n = sizeof(a) / sizeof(a[0]);
+    sort(a, n);
+    int k;
+    cin >> k;
+    // PrintArray(a, n);
+    int i = 0;
+    int j = 0;
+    int difference = 10000;
+
+    while (j != n)
+    {
+        if (j - i + 1 < k)
+            j++;
+
+        else if (j - i + 1 == k)
+        {
+            difference = min((a[j] - a[i]), difference);
+           
+
+            i++;
+            j++;
+        }
+    }
+
+    cout << difference;
+}

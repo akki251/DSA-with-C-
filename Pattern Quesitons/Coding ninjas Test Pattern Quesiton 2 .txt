@@ -1,0 +1,46 @@
+int main()
+{
+
+    int n;
+    bool done = false;
+    int i = 0;
+    int j = 0;
+    cin >> n;
+    int val;
+    int p = 1;
+    while (i <= n - 1)
+    {
+        done = false;
+        val = 1;
+        j = 1;
+        while (j <= 2 * n)
+        {
+
+            while (j <= n - i)
+            {
+                cout << val;
+                val++;
+                j++;
+            }
+
+            if (!done)
+            {
+                int k = 1;
+                while (k <= 2 * i)
+                {
+                    cout << "*";
+                    j++;
+                    k++;
+                    done = true;
+                }
+            }
+        
+
+            cout << --val;
+            j++;
+        }
+
+        cout << endl;
+        i++;
+    }
+}

@@ -1,5 +1,6 @@
 Longest Consecutive Subsequence
-
+using sorting, 
+however o(N) can be acheived by using hasmapss and priority ques,Which I havn't studied yet.
 
 int removeDuplicates(int a[], int n)
 {

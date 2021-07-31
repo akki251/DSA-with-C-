@@ -1,0 +1,83 @@
+int counter = 0;
+void mergeArray(int arr[], int low, int mid, int high)
+{
+
+      int n1 = mid - low + 1;
+    int n2 = high - mid;
+
+    int a[n1];
+    int b[n2];
+
+    int i;
+    for (i = 0; i < n1; i++)
+    {
+
+        a[i] = arr[low + i];
+    }
+    for (i = 0; i < n2; i++)
+    {
+
+        b[i] = arr[mid + 1 + i];
+    }
+
+    i = 0;
+    int j = 0;
+    int k = low;
+    while (i < n1 && j < n2)
+    {
+        if (a[i] < b[j])
+        {
+            arr[k] = a[i];
+            k++;
+            i++;
+        }
+        else
+        {
+            counter = counter + n1 - i;
+            arr[k] = b[j];
+            j++;
+            k++;
+        }
+    }
+
+    while (i < n1)
+    {
+        arr[k] = a[i];
+        i++;
+        k++;
+    }
+    while (j < n2)
+    {
+        arr[k] = b[j];
+        j++;
+        k++;
+    }
+
+    cout << counter << endl;
+}
+
+void mergeSort(int a[], int low, int high)
+{
+
+    if (low >= high)
+    {
+        return;
+    }
+
+    int mid = (low + high) / 2;
+
+    mergeSort(a, low, mid);
+    mergeSort(a, mid + 1, high);
+
+    mergeArray(a, low, mid, high);
+}
+int main()
+{
+
+    int a[] = {8, 5, 3, 4, 1, 6, 2};
+
+    int n = sizeof(a) / sizeof(a[0]);
+
+    mergeSort(a, 0, n - 1);
+    // PrintArray(a, n);
+}

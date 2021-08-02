@@ -1,0 +1,34 @@
+Buy annd sell Stock multiple Purchase and sell single stock Problem
+int main()
+{
+   int a[]  = {  100, 180, 260, 310,
+                    40, 535, 695};
+   
+   int n= sizeof(a)/sizeof(a[0]);
+ 
+
+ int profit = 0 ; 
+ 
+ int i;
+ for(i =1 ; i  < n ; i ++)
+ {
+    if(a[i] > a[i-1])
+    {
+        profit = profit + a[i] - a[i-1];
+    }
+     
+     
+  
+    
+ }
+ 
+ cout << profit;
+ 
+
+
+
+
+
+
+  
+}

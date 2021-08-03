@@ -3,46 +3,38 @@
 using namespace std;
 
 
-void  selectionSort(int a[] , int n)
+void selectionSort(int a[], int n)
 {
-    if( n == 1)
-    return;
-    
-    int i;
-    int minIndex= 0;
-    for(i = 1; i < n ; i ++)
-    
-{
-    if(a[i] < a[minIndex])
-    minIndex = i;
+
+    if (n == 1)
+    {
+        return;
+    }
+    int min = a[0];
+    int minIndex = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] < min)
+        {
+            min = a[i];
+            minIndex = i;
+        }
+    }
+// fine minimum element in array, and swap with zeroth / first element 
+    swapInt(&a[minIndex], &a[0]);
+
+    selectionSort(a + 1, n - 1); // call recursively
+
+  
 }
-
-
-int temp = a[0];
-a[0] = a[minIndex];
-a[minIndex] = temp;
-
-
-selectionSort(a+1,n-1);
-
-
-}
-
 
 int main()
 {
-  
-  int i;
-  int a[] = { 5,4,3,2,1};
-  
-  int n = sizeof(a)/sizeof(a[0]);
-  
-  selectionSort(a,n);
-  
-  
-  for(i = 0 ; i < n ; i ++)
-  {
-      cout << a[i];
-  }
-  
+
+    int a[] = {8, 5, 3, 4, 1, 6, 2};
+
+    int n = sizeof(a) / sizeof(a[0]);
+
+    selectionSort(a, n);
+    PrintArray(a, n);
 }

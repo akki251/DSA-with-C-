@@ -32,83 +32,17 @@ Output: 0
 ///////////////// SOLUTON
 
 
-
-#include <iostream>
-#include <math.h>
-using namespace std;
-
-int digits(int n)
-{
-
-   int count = 0;
-   while (n != 0)
-   {
-      n = n / 10;
-      count++;
-   }
-
-   return count;
-}
-
-int power(int n , int x)
-{
-int product  = 1;
-     while(x!=0)
-     {
- product  = product * n;
-x--;
-     }
-
-     return product;
-}
-
-
-
-
 int main()
 {
+    int orginalNumber;
+    cin >> orginalNumber;
+    int reversedNumber = 0;
+    while (orginalNumber != 0)
+    {
+        reversedNumber = reversedNumber * 10 + orginalNumber % 10;
+        orginalNumber /= 10;
+    }
 
-   int n;
-
-   cin >> n;
-
-   int digitCount = digits(n)- 1;
-
-   int reverseNumber = 0;
-   
-   while (n != 0)
-   {
-    
-
-      int powers =  power(10, digitCount);
-      int remainder = n % 10;
-      reverseNumber = reverseNumber + remainder * powers;
-     
-      n = n / 10;
-
-      digitCount--;
-   }
-
-   cout << reverseNumber;
+    cout << reversedNumber;
 }
-
-
-
-
-// ALTERNATIVEF APPROACH 
-#include <iostream>  
-using namespace std;  
-int main()  
-{  
-int n, reverse=0, rem;    
-cout<<"Enter a number: ";    
-cin>>n;    
-  while(n!=0)    
-  {    
-     rem=n%10;      
-     reverse=reverse*10+rem;    
-     n/=10;    
-  }    
- cout<<"Reversed Number: "<<reverse<<endl;     
-return 0;  
 

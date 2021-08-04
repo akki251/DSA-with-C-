@@ -1,0 +1,28 @@
+int main()
+{
+
+    char str[100] = "malayalas";
+
+    int size = strlen(str);
+
+    int start = 0;
+    int end = size - 1;
+    while (start < end)
+    {
+        if (str[start++] != str[end--])
+        {
+
+            break;
+        }
+    }
+
+    if (start < end)
+    {
+        cout << false;
+    }
+
+    else if (start >= end)
+    {
+        cout << true;
+    }
+}

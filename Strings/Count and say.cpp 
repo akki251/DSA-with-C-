@@ -1,0 +1,26 @@
+NOT FINAL SOLN PLEAE REVIEW ONCE
+
+int main()
+{
+
+    string s = "1";
+    int i = 0;
+    int count = 1;
+    int size = s.length();
+  
+    while (i != size)
+    {
+
+        if (s[i] == s[i + 1])
+        {
+            count++;
+        }
+        else
+        {
+            cout << count << s[i];
+            count = 1;
+        }
+
+        i++;
+    }
+}

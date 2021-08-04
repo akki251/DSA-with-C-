@@ -1,0 +1,19 @@
+ int a[] = {9, 2, 3, 4, 5};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int minimum = a[0]; // assuming first elemnt as the minimum
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] < minimum)
+            minimum = a[i];
+    }
+
+    cout << "minimum element is : " << minimum << endl;
+    int Maximum = a[0]; // assuming first elemnt as the Maximum
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] > Maximum)
+            Maximum = a[i];
+    }
+
+    cout << "Maximum element is : " << Maximum << endl;

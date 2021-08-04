@@ -5,58 +5,45 @@ USING SLIDING WINDOW THEOREM
 
 int main()
 {
-    int a[] = {21, 23, 56, 65, 34, 54, 76, 32, 23, 45, 21, 23, 25};
+     // Check if a key is present in every segment of size k in an array
 
-    int n = sizeof(a) / sizeof(a[0]);
+    int arr[] = {5, 8, 7, 12, 14, 3, 9};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    int k;
-    cin >> k;
+    int key = 8;
+    int segmentSize = 2;
 
-    int x;
-    cin >> x;
-    int i = 0;
-    int j = 0;
+    int start = 0;
+    int end = 0;
 
-    int m;
-
-    while (j != n)
+    while (end != size)
     {
+        if (end - start + 1 < segmentSize)
+            end++;
 
-        if (j - i + 1 < k)
+        if (end - start + 1 == segmentSize)
         {
-            j++;
-        }
-
-        else if (j - i + 1 == k)
-        {
-
-            for (m = i; m <= j; m++)
+            int count = 0;
+            for (int i = start; i <= end; i++)
             {
-
-                if (a[m] == x)
-                {
-                    break;
-                }
+                if (arr[i] != key)
+                    count++;
             }
 
-            if (m == j + 1)
+            if (count == segmentSize)
             {
-                cout << "not found in all sub arrays";
+                cout << false;
                 return 0;
             }
 
-            if (n - j < k)
+            start += segmentSize;
+            end += segmentSize;
+            if (end >= size)
             {
-                i = i + k;
-                j = n;
-            }
-            else
-            {
-                i = i + k;
-                j = j + k;
+                end = size - 1;
             }
         }
     }
 
-    cout << "found in all arrays";
+    cout << true;
 }

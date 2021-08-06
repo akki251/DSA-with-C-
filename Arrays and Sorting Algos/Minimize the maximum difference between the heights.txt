@@ -1,5 +1,6 @@
 Minimize the maximum difference between the heights
 https://www.youtube.com/watch?v=o9WG7t6EKZo
+https://www.loom.com/share/b145f3c44b0d405c9f62a977add2139d
 DONE PERFECTLY
 
 int main()

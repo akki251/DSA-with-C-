@@ -1,5 +1,5 @@
-https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
-
+https://leetcode.com/problems/find-all-duplicates-in-an-array/
+https://www.youtube.com/watch?v=ACYunkWQnSI
 
 int absolute(int x)
 {

@@ -1,0 +1,48 @@
+int main()
+{
+
+    string s = "defRTSersUXI";
+    int i;
+    string ansSmall = "";
+    string ansBig = "";
+
+    for (i = 0; i < s.length(); i++)
+    {
+
+        if ('a' <= s[i] && s[i] <= 'z') // small
+        {
+            ansSmall = ansSmall + s[i];
+        }
+
+        else if ('A' <= s[i] && s[i] <= 'Z') // capital
+        {
+
+            ansBig = ansBig + s[i];
+        }
+    }
+
+    sortString(ansSmall);
+    sortString(ansBig);
+
+    int k = 0;
+    int l = 0;
+
+    for (i = 0; i < s.length(); i++)
+    {
+
+        if ('a' <= s[i] && s[i] <= 'z') // small
+        {
+            s[i] = ansSmall[k];
+            ++k;
+        }
+
+        else if ('A' <= s[i] && s[i] <= 'Z') // capital
+        {
+
+            s[i] = ansBig[l];
+            ++l;
+        }
+    }
+
+    cout << s;  
+}

@@ -1,4 +1,4 @@
-// https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
+https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 
 int binarySearchInRotatedandSortedArray(int a[], int low, int high, int key)
 {

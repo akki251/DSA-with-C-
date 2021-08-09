@@ -17,35 +17,34 @@ int main()
 
     int firstArrayLow = 0;
     int secondArrayLow = 0;
-    int count = 0;
+    
 
-    while (firstArrayLow != firstArraySize && secondArrayLow != secondArraySize)
+    while (firstArrayLow < firstArraySize && secondArrayLow < secondArraySize)
     {
+      
 
         if (firstArray[firstArrayLow] < secondArray[secondArrayLow])
         {
             firstArrayLow++;
-            cout << " me chala - 1";
+            
         }
 
-        else if (secondArray[secondArrayLow] < firstArray[firstArrayLow])
+        else if (firstArray[firstArrayLow] > secondArray[secondArrayLow])
         {
-            secondArrayLow++;
-            cout << " me chala - 2";
+
+            cout << " not a subset";
+            return 0 ;
         }
 
         else if (firstArray[firstArrayLow] == secondArray[secondArrayLow])
         {
             firstArrayLow++;
             secondArrayLow++;
-            count++;
+            
         }
     }
 
-    if (count == secondArraySize)
-        cout << "array 2 is subset of array 1";
-    else
-    {
-        cout << "array 2 is not the subset of array 1";
-    }
+
+    cout << "It's a subset ";
+
 }

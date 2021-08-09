@@ -1,4 +1,4 @@
-https://www.youtube.com/watch?v=FbGG2qpNp4U
+ 
 Rain Water Trapping VVIMP
 
 
@@ -9,7 +9,7 @@ int main()
 
     int n = sizeof(a) / sizeof(a[0]);
     int i;
-    int area = 0;
+ 
 
     int maxL[n];
     int maxR[n];

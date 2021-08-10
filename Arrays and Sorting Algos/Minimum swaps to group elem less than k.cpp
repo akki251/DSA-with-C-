@@ -1,48 +1,46 @@
-int main()
-{
+int a[] = {10, 12, 20, 20, 5, 19, 19, 12, 1, 20, 1};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    int k = 1;
     int i = 0;
 
     int count = 0;
-
-    int a[] = {10, 12, 20, 20, 5, 19, 12, 1, 20, 1};
-    int n = sizeof(a) / sizeof(a[0]);
-    int member = 0;
-    int k = 1;
-
     for (i = 0; i < n; i++)
     {
         if (a[i] <= k)
         {
-            member++;
+            count++;
         }
     }
+    if (count == 0)
+        return 0;
+
+    int windowSize = count;
 
     i = 0;
     int j = 0;
-    int ans = INT16_MAX;
+    int ans = INT8_MAX;
+    int countSwap = 0;
 
-    while (j != n)
+    while (j < n)
     {
 
-        count = 0;
-        if (j - i + 1 < member)
+        if (j - i + 1 != windowSize)
             j++;
 
-        else if (j - i + 1 == member)
+        if (j - i + 1 == windowSize)
         {
-            for (i = i; i <= j; i++)
+            countSwap = 0;
+            int p = i;
+            for (; p <= j; p++)
             {
-                if (a[i] > k)
+                if (a[p] > k)
                 {
-                    count++;
+                    countSwap++;
                 }
             }
-
-            ans = min(ans, count);
-
+            ans = min(countSwap, ans);
             i++;
         }
     }
-
     cout << ans;
-}

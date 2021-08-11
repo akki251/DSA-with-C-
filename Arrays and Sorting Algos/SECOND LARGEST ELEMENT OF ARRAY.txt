@@ -25,3 +25,47 @@ int main()
 
     cout << a[secondLargest];
 }
+
+
+// BETTER APPROACH 
+https://classroom.codingninjas.com/app/classroom/me/9524/content/153181/offering/1873252/problem/186
+
+  
+    int largest =-2147483648;
+    int secondLargest = -2147483648;
+    int i;
+    
+    for(i=0 ; i < n ; i ++)
+    {
+        
+        if(a[i] > largest)
+      {  
+            secondLargest = largest;
+            largest = a[i];}
+        
+        else if(largest == a[i])
+        {
+            secondLargest;
+        }
+        
+      else if(a[i] < largest && a[i] > secondLargest)
+        {
+            secondLargest = a[i];
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    return secondLargest;
+    
+    
+    
+    
+    
+    
+}

@@ -32,3 +32,31 @@ int main()
     for (i = 0; i < n; i++)
         cout << a[i];
 }
+
+
+///
+More optimised and right approach;
+
+    int a[] = {1, 2, 3, 3, 4, 5};
+    int n = sizeof(a) / sizeof(a[0]);
+    int i;
+
+    int k = 0;
+    int *p = new int[n]; // we don make variable array on stack, we make it dynamic on heap.
+    for (i = 0; i < n - 1; i++)
+    {
+        if (a[i] != a[i + 1])
+        {
+            p[k] = a[i];
+            k++;
+        }
+    }
+
+    p[k] = a[n - 1];
+
+    for (i = 0; i <= k; i++)
+    {
+        a[i] = p[i];
+    }
+
+    printArray(a, k + 1);

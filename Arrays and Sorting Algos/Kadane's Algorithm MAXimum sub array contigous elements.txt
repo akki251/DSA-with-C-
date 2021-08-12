@@ -27,6 +27,38 @@ int main()
 
 
 
+// Length of max subarray 
+  int a[] = {-13, -2,  12, 5};
+    int n = sizeof(a) / sizeof(a[0]);
+    int length = INT16_MIN;
+    int sum = INT16_MIN;
+    int currentSum = 0;
+    int si = 0;
+    int ei = 0;
+    int s = 0;
+    int i;
+
+    for (i = 0; i < n; i++)
+    {
+        currentSum = currentSum + a[i];
+
+        if (currentSum > sum)
+        {
+            sum = currentSum;
+            si = s;
+            ei = i;
+        }
+
+        if (currentSum < 0)
+        {
+
+            s = i + 1;
+            currentSum = 0;
+        }
+    }
+
+    cout << sum << endl;
+    cout << si << ei;
 
 
 

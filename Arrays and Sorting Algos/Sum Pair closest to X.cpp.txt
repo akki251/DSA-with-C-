@@ -1,0 +1,24 @@
+https://www.geeksforgeeks.org/count-pairs-array-whose-sum-less-x/
+
+
+ int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int n = sizeof(a) / sizeof(a[0]);
+    // mergeSort(a, 0, n - 1);
+    int k = 7;
+    int i = 0;
+    int j = n - 1;
+    int result = 0;
+    while (i < j)
+    {
+        if (a[i] + a[j] < k)
+        {
+            result = result + j - i;
+
+            i++;
+        }
+
+        else
+            j--;
+    }
+
+    cout << result;

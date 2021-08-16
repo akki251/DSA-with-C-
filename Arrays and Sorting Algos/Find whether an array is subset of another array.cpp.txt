@@ -1,50 +1,48 @@
 Find whether an array is subset of another array | 
 
 
-int main()
+bool IsSubset(int a1[], int size1, int a2[], int size2)
 {
 
-    int firstArray[] = {11, 1, 13, 21, 3, 7};
+    if (size2 > size1)
+        return false;
 
-    int firstArraySize = sizeof(firstArray) / sizeof(firstArray[0]);
+    sort(a1, a1 + size1);
+    sort(a2, a2 + size2);
 
-    int secondArray[] = {11, 3, 7, 1};
-    int secondArraySize = sizeof(secondArray) / sizeof(secondArray[0]);
+    int i = 0;
+    int j = 0;
 
-    sort(firstArray, firstArraySize);
-
-    sort(secondArray, secondArraySize);
-
-    int firstArrayLow = 0;
-    int secondArrayLow = 0;
-    
-
-    while (firstArrayLow < firstArraySize && secondArrayLow < secondArraySize)
+    while (i < size1 && j < size2)
     {
-      
 
-        if (firstArray[firstArrayLow] < secondArray[secondArrayLow])
+        if (a2[j] > a1[i])
         {
-            firstArrayLow++;
-            
+            i++;
         }
+ 
+        else if (a1[i] > a2[j])
+            return false;
 
-        else if (firstArray[firstArrayLow] > secondArray[secondArrayLow])
+        else
         {
-
-            cout << " not a subset";
-            return 0 ;
-        }
-
-        else if (firstArray[firstArrayLow] == secondArray[secondArrayLow])
-        {
-            firstArrayLow++;
-            secondArrayLow++;
-            
+            i++;
+            j++;
         }
     }
 
+    if (j == size2)
+        return true;
+    return false;
+}
+int main()
+{
 
-    cout << "It's a subset ";
+    int a1[] = {10, 5, 2, 23, 19};
+    int a2[] = {19, 5, 3};
 
+    int size1 = sizeof(a1) / sizeof(a1[0]);
+    int size2 = sizeof(a2) / sizeof(a2[0]);
+
+    cout << IsSubset(a1, size1, a2, size2);
 }

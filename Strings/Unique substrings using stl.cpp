@@ -34,4 +34,17 @@ class Solution{
 }
 
     
-};
+};//
+OPTIMAL SOLN
+  set<string>s ;
+    int n=str.size();
+    for(int i =0;i<n;i++){
+        string res="";
+        for(int j=i;j<n;j++){
+            res+=str[j];
+            s.insert(res);
+        }
+    }
+    return s.size();
+}
+

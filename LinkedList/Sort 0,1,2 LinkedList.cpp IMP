@@ -1,0 +1,37 @@
+https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
+
+ public:
+
+    Node* segregate(Node *head) {
+        
+        
+        
+        Node *curr = head;
+        int a[3] = {0};
+        while(curr!= NULL)
+        {
+            a[curr->data] = a[curr->data]  + 1;
+            curr = curr->next;
+        }
+        
+        int i = 0;
+        curr= head;
+        
+        while(curr!=NULL)
+        {
+            if(a[i] == 0)
+            {
+                i++;
+            }
+            else 
+            {
+                 curr->data = i;
+                 a[i]--;
+                 curr = curr->next;
+            }
+        }
+        
+        
+        return head;
+    }
+                

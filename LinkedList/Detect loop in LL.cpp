@@ -26,14 +26,35 @@ bool detectLoop(Node* head)
           
     }
 
-// for detectiing loop
-Node *q = head;
-p is the meeting point of loop, where slow and fast met;
-while(p!=q)
+// for finding first node of  loop
+Node *firstNode(Node *head)
 {
-  p =p->next;
-  q = q->next;
+	Node *slow = head;
+    Node *fast  = head;
+    if(head == NULL || head->next == NULL)
+        return NULL;
+      slow = slow->next;
+    fast = fast->next->next;
+    while( slow && fast && fast->next != NULL)
+    {
+        
+        if(slow == fast)
+            break;
+    slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    if(slow!=fast)
+        return NULL;
+    
+    Node * curr = head;
+    while( curr != fast)
+    {
+        curr = curr->next;
+        fast = fast->next;
+    }
+    
+    return curr;
+    
+    
 }
-
-return p;
-

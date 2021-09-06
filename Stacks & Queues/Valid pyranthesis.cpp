@@ -1,4 +1,7 @@
- if(s.size() == 0)
+//  https://www.youtube.com/watch?v=VdQuwtEd10M
+ 
+ int longestValidParentheses(string s) {
+        if(s.size() == 0)
             return 0;
         stack <int> st;
         st.push(-1);
@@ -8,19 +11,20 @@
             if(s[i] == '(')
                 st.push(i);
             
-            else
+            else 
             {
-                if(!st.empty())
-                    st.pop();
-                    
-                    if(!st.empty())
-                        ans = max(ans,i-st.top());
+                st.pop();
                 
-                else 
+                if(st.empty())
                     st.push(i);
-                        
+                else 
+                {
+                    int len = i - st.top();
+                    ans = max(ans,len);
+                }
             }
         }
         
         return ans;
     }
+};

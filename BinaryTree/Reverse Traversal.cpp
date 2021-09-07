@@ -14,7 +14,7 @@ vector<int> reverseLevelOrder(Node *root)
             pendingNodes.pop();
              s.push(p->data);
     
-         
+        
             
             if(p->right)
             pendingNodes.push(p->right);

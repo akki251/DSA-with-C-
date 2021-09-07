@@ -36,20 +36,23 @@ int pop(stack<int>& s){
   if(s.size() == 0)
   return -1;
   
-  if(s.top() >=  minElem)
+  if(s.top() >  minElem)
   {
       int a = s.top();
       s.pop();
       return a;
   }
   
-  else if(s.top() < minElem)
+  else 
   {
-       
-       int a = 2*minElem -s.top();
-       minElem = a;
+       // s.top() is not the real minimum elem, as we have molded in the variation of flag,in push method.
+        // so we have to redefine min, an return prev min.
+      int x = mini;
+       int p = s.top();
+       mini = 2*mini - s.top();
        s.pop();
-       return a;
+       p= x;
+       return p;
       
   }
 

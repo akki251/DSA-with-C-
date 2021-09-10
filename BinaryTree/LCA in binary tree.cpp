@@ -1,4 +1,5 @@
  public:
+    // https://www.youtube.com/watch?v=JW-9nhktGGA watch algorithm 2
     //Function to return the lowest common ancestor in a Binary Tree.
     Node* lca(Node* root ,int n1 ,int n2 )
     {

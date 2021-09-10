@@ -14,7 +14,7 @@ public:
            
            for(int i =1 ; i < intervals.size() ; i++)
            {
-                  if(intervals[i][0] <= ans.back()[1])
+                  if(intervals[i][0] <= ans.back()[1]) // checking start time of new event , with the end time of the last elem in the vector.
                   {
                       ans.back()[1] = max(ans.back()[1] , intervals[i][1]);
                   }

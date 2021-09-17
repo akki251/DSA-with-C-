@@ -1,32 +1,33 @@
-//  https://www.youtube.com/watch?v=0exOBHgzApE 
- best video explaination.
- 
- int a[] = {3, -5, 0, 1, 12, 5};
+// https://leetcode.com/problems/maximum-product-subarray/
+class Solution {
+public:
 
-    int max_product_ending = a[0];
-    int min_product_ending = a[0];
-    int n = sizeof(a) / sizeof(a[0]);
-    int i;
 
-    int maxProduct = INT16_MIN;
-    for (i = 1; i < n; i++)
+int maxProduct(vector<int>& a) {
+
+
+if(a.size() == 0)
+    return 0;
+
+int maxP = a[0];
+int currMax = a[0];
+int currMin = a[0];
+    
+    for(int i = 1 ; i < a.size() ; i++)
     {
-
-        if (a[i] == 0)
-        {
-            max_product_ending = 1;
-            min_product_ending = 1;
-            continue;
-        }
-
-        else
-        {
-            int temp = max_product_ending;
-            max_product_ending = maximumofThree(a[i], max_product_ending * a[i], min_product_ending * a[i]);
-            min_product_ending = minimumofThree(a[i], temp * a[i], min_product_ending * a[i]);
-        }
-
-        maxProduct = max(maxProduct, max_product_ending);
+        
+        int p1 = currMax * a[i];
+        int p2 = currMin * a[i];
+        
+        
+        currMax = max(a[i] , max(p1,p2));
+        currMin = min(a[i], min(p1,p2));
+        
+        maxP = currMax > maxP ? currMax  : maxP;
     }
+    
+    return maxP;
+}
+    
 
-    cout << maxProduct;
+};

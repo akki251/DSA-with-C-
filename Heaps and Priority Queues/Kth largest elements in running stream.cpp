@@ -20,7 +20,7 @@ vector<int> kthLargest(int k, int a[], int n) {
      }
      
      
-     if(pq.size() < k)
+     if(k > pq.size() ) 
      ans[i]=  -1;
      else{
          ans[i] = pq.top();

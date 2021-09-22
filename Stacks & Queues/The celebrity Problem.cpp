@@ -29,10 +29,13 @@
          
           
           for(int i = 0; i< n ; i++)
-          if( i != pc)
           {
+            if( i != pc)
+             {
               if(M[i][pc] == 0)
                 return -1;
+             }
+
           }
           
           

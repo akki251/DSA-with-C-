@@ -1,51 +1,85 @@
-
-// https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
-
+int lengthLL(Node * head)
+{
+    
+    if(!head)
+    return  0;
+    
+    return 1 + lengthLL(head->next);
+}
 int intersectPoint(Node* head1, Node* head2)
 {
-    int length1 = lengthLL(head1);
-        int length2 = lengthLL(head2);
-        bool maxL = false;
-        if(length1  > length2)
-        maxL = true;
-        else
-        maxL = false;
-        
-        int diff = abs(length1 - length2);
-        if(maxL)
-        {
-              Node *temp1 = head1;
-            int count = 1;
-            while(count <= diff)
-            {
-               count++;
-                temp1 = temp1->next;
-            }
-            
-            while(temp1 != head2)
-            {
-                temp1= temp1->next;
+    
+    
+    
+       int len1 = lengthLL(head1);
+       int len2 = lengthLL(head2);
+     
+     
+     if(len1 > len2)
+     {
+         
+         
+         Node * curr = head1;
+         
+         int count = 0;
+         int diff= len1-len2;
+         
+         
+         while(count < diff)
+         {
+             if(curr == NULL)
+             return -1;
+             curr= curr->next;
+             count++;
+         }
+         
+         while(curr != head2 && curr!= NULL && head2!=NULL )
+         {
+                curr =curr->next;
                 head2 = head2->next;
-            }
-            
-            return temp1->data;
-            
-        }
-        else 
-        {
-             Node *temp2 = head2;
-              int count = 1;
-            while(count <= diff)
-            {
-               count++;
-                temp2 = temp2->next;
-            }
-              while(temp2 != head1)
-            {
-                temp2= temp2->next;
+         }
+         
+         
+         if(curr == head2)
+         return curr->data;
+         else
+         return -1;
+         
+         
+         
+         
+         
+     }
+     else
+     {
+          Node * curr = head2;
+         
+         int count = 0;
+         int diff= len2-len1;
+         
+         
+         while(count < diff)
+         {
+             if(curr == NULL)
+             return -1;
+             curr= curr->next;
+             count++;
+         }
+         
+         while(curr != head1 && curr!= NULL && head1!=NULL )
+         {
+                curr =curr->next;
                 head1 = head1->next;
-            }
-            
-            return temp2->data;
-        }
+         }
+         
+         
+         if(curr == head1)
+         return curr->data;
+         else
+         return -1;
+         
+     }
+       
+    
 }
+

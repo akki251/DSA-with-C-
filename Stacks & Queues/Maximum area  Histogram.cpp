@@ -1,65 +1,85 @@
-// MAximum area Histogram.cpp
-// https://www.youtube.com/watch?v=St0Jf_VmG_g
-int main()
-{
-    int a[] = {6, 2, 5, 4, 5, 1, 6};
-    int n = sizeof(a) / sizeof(a[0]);
-    // NSL
-    vector<int> v;
-    stack<int> s;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     if (s.size() == 0)
-    //         v.push_back(-1);
-
-    //     else if (!s.empty() && a[s.top()] < a[i])
-    //         v.push_back(s.top());
-
-    //     else if (!s.empty() && a[s.top()] >= a[i])
-    //     {
-    //         while (!s.empty() && a[s.top()] >= a[i])
-    //         {
-    //             s.pop();
-    //         }
-
-    //         if (s.empty())
-    //             v.push_back(-1);
-
-    //         else
-    //             v.push_back(s.top());
-    //     }
-    //     s.push(i);
-    // }
-
-    // for (auto it : v)
-    //     cout << it << " ";
-    // cout << endl;
-    // // NSR
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if (s.size() == 0)
-            v.push_back(n);
-
-        else if (!s.empty() && a[s.top()] < a[i])
-            v.push_back(s.top());
-
-        else if (!s.empty() && a[s.top()] >= a[i])
+ 
+        stack <long long > st;
+        vector<long long >left ;
+        // NSL
+        for(int i = 0 ; i < n ; i++)
         {
-            while (!s.empty() && a[s.top()] >= a[i])
+            
+            if(st.empty())
             {
-                s.pop();
+                left.push_back(-1);
             }
-
-            if (s.empty())
-                v.push_back(n);
-
-            else
-                v.push_back(s.top());
+            
+            if(!st.empty() && a[i] > a[st.top()])
+            left.push_back(st.top());
+            
+            if(!st.empty() && a[i] <= a[st.top()])
+            {
+                
+                
+                while(!st.empty() && a[i] <= a[st.top()])
+                st.pop();
+                
+                if(st.empty())
+                left.push_back(-1);
+                
+                else 
+                left.push_back(st.top());
+            }
+            
+           st.push(i); 
         }
-        s.push(i);
-    }
-
-    reverse(v.begin(), v.end());
-    
-    // create a new array of these two diff vector.. and  insert (Right[i] - left[i] -1) * a[i];
-    // and then find maximum value of that ARRAY.
+        
+        
+        // NSR 
+      while(!st.empty())
+      st.pop();
+        vector<long long > right;
+        
+          for(int i = n - 1; i >= 0 ; i--)
+        {
+            
+            if(st.empty())
+            {
+                right.push_back(n);
+            }
+            
+            if(!st.empty() && a[i] > a[st.top()])
+            right.push_back(st.top());
+            
+            if(!st.empty() && a[i] <= a[st.top()])
+            {
+                
+                
+                while(!st.empty() && a[i] <= a[st.top()])
+                st.pop();
+                
+                if(st.empty())
+                right.push_back(n);
+                
+                else 
+                right.push_back(st.top());
+            }
+            
+           st.push(i); 
+        }
+        
+        
+        reverse(right.begin(),right.end());
+        
+        
+        
+        vector<long long> ans(n) ;
+        
+        
+        for(int i = 0 ; i < n ; i ++)
+        {
+            ans.push_back( (right[i] - left[i]  -1 ) * a[i] );
+        }
+        
+        return *max_element(ans.begin(),ans.end());
+        
+        
+        
+        
+        

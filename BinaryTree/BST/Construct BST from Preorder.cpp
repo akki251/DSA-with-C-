@@ -1,31 +1,29 @@
-  TreeNode* bstFromPreorder(vector<int>& preorder) {
-      
-        
-        if(preorder.size() == 0)
+Node * helper(vector<int> preorder , int lr ,int rr , int &i)
+    {
+        if(i >= preorder.size())
             return NULL;
-        TreeNode * root = new TreeNode(preorder.at(0));
-        if(preorder.size() == 1)
-            return root;
+        if(preorder[i] < lr || preorder[i] > rr  )
+            return NULL;
         
-        vector<int > left ,right;
+        Node * root = new Node(preorder[i]);
+        i = i + 1;
         
-        for(int i  = 1 ; i < preorder.size() ; i++)
-        {
-            
-            if(preorder.at(i) < preorder.at(0))
-                left.push_back(preorder.at(i));
-            
-                
-            if(preorder.at(i) > preorder.at(0))
-                right.push_back(preorder.at(i));
-        }
-        
-        root->left =bstFromPreorder(left);
-        root->right =bstFromPreorder(right);
+        root->left= helper(preorder,lr,root->val-1,i);
+        root->right= helper(preorder,root->val+1,rr,i);
         
         
         return root;
+    }
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+      
         
+        int n = preorder.size() ;
+        int i = 0;
+        return helper(preorder,INT_MIN,INT_MAX ,i);
         
     }
 };
+
+
+
+TIME O(N);

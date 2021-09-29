@@ -14,7 +14,7 @@ public:
         for(int i=1;i<n;i++){
             //for swaped string
             if(isScrambled(s1.substr(0,i),s2.substr(n-i,i)) and isScrambled(s1.substr(i,n-i),s2.substr(0,n-i))){
-                flag|=true;
+                flag=true;
                 break;
             }
 

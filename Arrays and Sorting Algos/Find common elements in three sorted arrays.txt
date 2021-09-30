@@ -11,7 +11,7 @@ int main()
     int n3 = sizeof(a3) / sizeof(a3[0]);
     int i = 0, j = 0, k = 0;
 
-    sort(a1, n1);
+    sort(a1, n1);   
 
     while (i < n1 && j < n2 && k < n3)
     {

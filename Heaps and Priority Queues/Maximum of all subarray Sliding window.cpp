@@ -1,31 +1,31 @@
-class Solution {
-public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        
-        // create a priority queue (Max Heap) of pair of int
-        // first of the pair is the element of the array
-        // and second is the index
-        priority_queue<pair<int,int>> p;
-        // create a vector to store the result
-        vector<int>res;
-        // add all the elements in the first window to the PQ
-        for(int i = 0; i < k; i++)
-            p.push({arr[i],i});
-        // add the max element of first window to the res vector
-        res.push_back(p.top().first);
-        // start iteration from the second window
-        for(int i = k; i < arr.size(); i++)
+ int a[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int n = sizeof(a) / sizeof(a[0]);
+    int k = 3;
+
+    priority_queue<int> pq;
+
+    int i = 0;
+    int j = 0;
+    vector<int> ans;
+    while (j < n)
+    {
+        pq.push(a[j]);
+        if (j - i + 1 < k)
+            j++;
+        else if (j - i + 1 == k)
         {
-            // add the element into the PQ
-            p.push({arr[i],i});
-            // remove all the elments which are not in the current window
-            // current window is from [i-k+1 , i]
-            while(!(p.top().second > i-k))
-                p.pop();
-            // add the max element in the PQ to the res
-            res.push_back(p.top().first);
+            ans.push_back(pq.top());
+            if (a[i] >= pq.top())
+            {
+                pq.pop();
+            }
+            i++;
+            j++;
         }
-        // return the result
-        return res;
-        
-    } 
+    }
+
+    for (auto it : ans)
+    {
+        cout << it << " ";
+    }
+}

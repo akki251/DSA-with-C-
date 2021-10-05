@@ -1,48 +1,70 @@
-  vector <int> zigZagTraversal(Node* root)
-    {
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
     
-    
-          stack <Node*> currentLevel;
-          stack <Node*> nextLevel;
+    #define Node TreeNode 
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        
+       vector<vector<int>> ans ; 
+        
+        if(!root)
+            return ans ;
+        
+        queue<Node *> q; 
+        q.push(root);
+        
+        int level = 1; 
+                        vector<int> v; 
 
-        currentLevel.push(root);
-     bool leftRight = true; 
-     vector<int> ans ;
- 
- while(!currentLevel.empty())
- {
-     
- 
-     
-         Node  * front = currentLevel.top();
-         currentLevel.pop();
-         ans.push_back(front->data);
-         
-         if(leftRight)
-         {
-             if(front->left)
-              nextLevel.push(front->left);
-              if(front->right)
-              nextLevel.push(front->right);
-         }
-         else 
-         {
-             
-               if(front->right)
-              nextLevel.push(front->right);
-             if(front->left)
-              nextLevel.push(front->left);
+        while(!q.empty())
+        {
             
-         }
-     
-  if(currentLevel.size() == 0)
-  {
-      leftRight = !leftRight;
-      swap(currentLevel,nextLevel);
-  }
-     
- }
- 
- return ans;
-    	
+            int n = q.size();
+            v.clear();
+            for(int i =1 ; i <= n ; i++)
+            {
+                
+                auto front = q.front() ;
+                q.pop();
+                
+                v.push_back(front->val);
+                
+                if(front->left)
+                    q.push(front->left);
+                if(front->right)
+                    q.push(front->right);
+                
+            }
+            if(level & 1)
+            {
+                ans.push_back(v);
+            }
+            else 
+            {
+                reverse(v.begin(),v.end());
+                ans.push_back(v);
+            }
+            level++;
+            
+            
+            
+        }
+        
+        
+        return ans ;
+        
+        
+        
+        
     }
+};

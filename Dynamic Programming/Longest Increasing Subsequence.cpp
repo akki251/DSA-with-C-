@@ -67,3 +67,42 @@ int main()
     }
 }
   // } Driver Code Ends
+
+
+.........//////////// NLOGN APPROACH
+
+
+  class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        
+        if(nums.size() == 0)
+        {
+            return 0;
+        }
+        
+        
+        vector<int> ans (1,nums[0]);
+        
+        for(int i  = 1 ; i < nums.size() ; i++)
+        {
+            
+            
+            if(nums[i] > ans.back())
+            {
+                ans.push_back(nums[i]);
+            }
+            else 
+            {
+                auto it = lower_bound(ans.begin() , ans.end() ,  nums[i]);
+                *it = nums[i];
+            }
+
+        }
+        
+        return ans.size();
+        
+        
+        
+    }
+};

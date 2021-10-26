@@ -46,7 +46,7 @@ int pop(stack<int>& s){
   else 
   {
        // s.top() is not the real minimum elem, as we have molded in the variation of flag,in push method.
-        // so we have to redefine min, an return prev min.
+        // so we have to redefine min, and return prev min.
       int x = mini;
        int p = s.top();
        mini = 2*mini - s.top();
